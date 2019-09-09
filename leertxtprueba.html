@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+    <script>
+    function leerArchivo(e) {
+  var archivo = e.target.files[0];
+  if (!archivo) {
+    return;
+  }
+  var lector = new FileReader();
+  lector.onload = function(e) {
+    var contenido = e.target.result;
+    mostrarContenido(contenido);
+  };
+  lector.readAsText(archivo);
+}
+
+function mostrarContenido(contenido) {
+  var elemento = document.getElementById('contenido-archivo');
+  elemento.innerHTML = contenido;
+}
+
+document.getElementById('file-input')
+  .addEventListener('change', leerArchivo, false);
+    
+</script>
+    <input type="file" id="file-input" />
+
+    <h3>Contenido del archivo:</h3>
+
+    <pre id="contenido-archivo"> </pre>
+
+
+</body>
+</html>

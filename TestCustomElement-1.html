@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test de Custom Element</title>
+</head>
+<body>
+    <hola-componentes> </hola-componentes>
+   
+
+  <script>
+    class HolaComponentes extends HTMLElement { // esta clase debe heredad de un elemento html
+      constructor() { //inicializa el contenido de nuestro componente
+        super();//llama al componente constructor del componentee padre
+        this.attachShadow( {mode: 'open'} ).innerHTML = '<p>Hola! soy un Custom Element!</p>';
+        // crea un nuevo nodo hijo, dentro del elemento personalizado, del que pueden a su vez colgar un árbol de etiquetas
+      }
+    }
+    customElements.define('hola-componentes', HolaComponentes);
+    //podemos usar la cclase omo implementación de un nuevo componente
+      //Una vez definido el nuevo elemento ya lo puedes usar
+  </script>
+</body>
+</html>
